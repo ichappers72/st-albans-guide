@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>London — Ideas Worth Travelling For</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a2e;
+      --cream: #f5f0e8;
+      --red: #c0392b;
+      --gold: #b8942e;
+      --muted: #6b6b7b;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: var(--ink);
+      padding: 3rem 2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      border: 40px solid rgba(192,57,43,0.15);
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 20%;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 25px solid rgba(184,148,46,0.12);
+    }
+
+    .header-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .distance-badge {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--red);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 2px;
+    }
+
+    /* Main content */
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Cards */
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(0,0,0,0.08);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 1.6rem 1.8rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.2rem;
+      align-items: start;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      background: #fafafa;
+    }
+
+    .card:hover .arrow {
+      transform: translateX(4px);
+      opacity: 1;
+    }
+
+    .card-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: rgba(0,0,0,0.07);
+      line-height: 1;
+      min-width: 2rem;
+      text-align: right;
+      padding-top: 2px;
+    }
+
+    .card-body {}
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .arrow {
+      font-size: 0.8rem;
+      color: var(--red);
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-url {
+      font-size: 0.73rem;
+      font-weight: 500;
+      color: var(--red);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      margin-right: 0.3rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag-free { background: #e8f5e9; color: #2e7d32; }
+    .tag-debates { background: #fff3e0; color: #e65100; }
+    .tag-geopolitics { background: #e3f2fd; color: #1565c0; }
+    .tag-history { background: #f3e5f5; color: #6a1b9a; }
+    .tag-philosophy { background: #fce4ec; color: #880e4f; }
+
+    /* Tip box */
+    .tip-box {
+      background: var(--ink);
+      color: white;
+      border-radius: 6px;
+      padding: 1.5rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tip-box::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      position: absolute;
+      top: -1.5rem;
+      right: 1rem;
+      color: rgba(255,255,255,0.05);
+      line-height: 1;
+    }
+
+    .tip-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .tip-text {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* Animations */
+    .card {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.18s; }
+    .card:nth-child(3) { animation-delay: 0.26s; }
+    .card:nth-child(4) { animation-delay: 0.34s; }
+    .card:nth-child(5) { animation-delay: 0.42s; }
+    .card:nth-child(6) { animation-delay: 0.5s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header .header-inner {
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.05s forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">20 minutes on the train</p>
+      <h1>London —<br><em>Ideas Worth</em><br>Travelling For</h1>
+      <p class="subtitle">Six institutions for curious minds. Free talks, world-class debates, and lectures on history, geopolitics, philosophy, and everything in between.</p>
+      <span class="distance-badge">St Albans → London · Thameslink · ~20 min</span>
+    </div>
+  </header>
+
+  <main>
+    <p class="section-label">The Six — Sign up to their mailing lists</p>
+
+    <div class="cards">
+
+      <a class="card" href="https://www.intelligencesquared.com" target="_blank">
+        <span class="card-number">01</span>
+        <div class="card-body">
+          <div class="card-title">Intelligence Squared <span class="arrow">→</span></div>
+          <p class="card-desc">The world's premier forum for live debate. Big thinkers argue both sides of the most pressing questions in politics, ethics, science and culture. Compelling even when you disagree with the result.</p>
+          <div>
+            <span class="tag tag-debates">Debates</span>
+            <span class="tag tag-philosophy">Philosophy</span>
+            <span class="tag tag-geopolitics">Geopolitics</span>
+          </div>
+          <br>
+          <span class="card-url">intelligencesquared.com</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.lse.ac.uk/events" target="_blank">
+        <span class="card-number">02</span>
+        <div class="card-body">
+          <div class="card-title">LSE Public Lectures <span class="arrow">→</span></div>
+          <p class="card-desc">The London School of Economics opens its doors to the public. Heads of state, Nobel laureates, and leading thinkers on international relations, economics, and global affairs. Regularly free to attend.</p>
+          <div>
+            <span class="tag tag-free">Often Free</span>
+            <span class="tag tag-geopolitics">Geopolitics</span>
+          </div>
+          <br>
+          <span class="card-url">lse.ac.uk/events</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.britishmuseum.org" target="_blank">
+        <span class="card-number">03</span>
+        <div class="card-body">
+          <div class="card-title">The British Museum <span class="arrow">→</span></div>
+          <p class="card-desc">Beyond the exhibits lies a programme of talks, symposia, and events spanning the full breadth of human history. Free entry to the permanent collection, with ticketed events for special programmes.</p>
+          <div>
+            <span class="tag tag-free">Free Entry</span>
+            <span class="tag tag-history">History</span>
+          </div>
+          <br>
+          <span class="card-url">britishmuseum.org</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.conwayhall.org.uk" target="_blank">
+        <span class="card-number">04</span>
+        <div class="card-body">
+          <div class="card-title">Conway Hall — Ethical Society <span class="arrow">→</span></div>
+          <p class="card-desc">A historic Holborn venue dedicated to free thought, humanist ethics, and open inquiry since 1887. Talks covering philosophy, secularism, and the big moral questions. Genuinely welcoming to young people.</p>
+          <div>
+            <span class="tag tag-philosophy">Philosophy</span>
+            <span class="tag tag-free">Often Free</span>
+          </div>
+          <br>
+          <span class="card-url">conwayhall.org.uk</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.chathamhouse.org" target="_blank">
+        <span class="card-number">05</span>
+        <div class="card-body">
+          <div class="card-title">Chatham House <span class="arrow">→</span></div>
+          <p class="card-desc">The Royal Institute of International Affairs — the gold standard for geopolitical analysis. Many events are open to the public, bringing together diplomats, analysts and policymakers on the world's most pressing issues.</p>
+          <div>
+            <span class="tag tag-geopolitics">Geopolitics</span>
+            <span class="tag tag-debates">International Affairs</span>
+          </div>
+          <br>
+          <span class="card-url">chathamhouse.org</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.gresham.ac.uk" target="_blank">
+        <span class="card-number">06</span>
+        <div class="card-body">
+          <div class="card-title">Gresham College <span class="arrow">→</span></div>
+          <p class="card-desc">Free public lectures since 1597 — yes, really. Professors cover history, science, law, music, and philosophy in accessible, hour-long talks. All lectures are also available free online. An extraordinary and underrated resource.</p>
+          <div>
+            <span class="tag tag-free">Always Free</span>
+            <span class="tag tag-history">History</span>
+            <span class="tag tag-philosophy">Philosophy</span>
+          </div>
+          <br>
+          <span class="card-url">gresham.ac.uk</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-label">The move</p>
+      <p class="tip-text">Sign up to the mailing list for each institution you like. Most send a weekly or monthly programme so you can pick and choose what catches your eye — no commitment, no cost, just show up when something looks good.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    Compiled for a curious mind relocating to St Albans, 2026
+  </footer>
+
+</body>
+</html>

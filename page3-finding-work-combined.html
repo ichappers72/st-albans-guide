@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finding Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1a2e; --cream: #f5f0e8; --red: #c0392b; --gold: #b8942e; --muted: #6b6b7b; --card-bg: #ffffff; }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    header { background: var(--ink); padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; border: 40px solid rgba(192,57,43,0.15); }
+    header::after { content: ''; position: absolute; bottom: -40px; left: 20%; width: 160px; height: 160px; border-radius: 50%; border: 25px solid rgba(184,148,46,0.12); }
+    .header-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards; }
+    .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 900; color: #ffffff; line-height: 1.1; margin-bottom: 1rem; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .subtitle { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; }
+
+    main { max-width: 700px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.1); margin-top: 2rem; }
+    .section-label:first-child { margin-top: 0; }
+
+    .cards { display: flex; flex-direction: column; gap: 1px; background: rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); padding: 1.6rem 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+    .card:nth-child(1) { animation-delay: 0.1s; } .card:nth-child(2) { animation-delay: 0.18s; } .card:nth-child(3) { animation-delay: 0.26s; } .card:nth-child(4) { animation-delay: 0.34s; } .card:nth-child(5) { animation-delay: 0.42s; } .card:nth-child(6) { animation-delay: 0.5s; }
+
+    .card-icon { font-size: 1.5rem; min-width: 2.2rem; text-align: center; padding-top: 2px; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
+    .card-address { font-size: 0.78rem; color: var(--gold); font-weight: 500; margin-bottom: 0.4rem; }
+    .card-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .card-link { font-size: 0.73rem; font-weight: 500; color: var(--red); text-decoration: none; margin-right: 0.8rem; }
+    .card-link:hover { text-decoration: underline; }
+
+    .badge { display: inline-block; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; margin-bottom: 0.4rem; margin-right: 0.3rem; }
+    .badge-recommended { background: #fff3e0; color: #e65100; }
+    .badge-walkin { background: #e8f5e9; color: #2e7d32; }
+    .badge-direct { background: #e3f2fd; color: #1565c0; }
+
+    .tip-box { background: var(--ink); color: white; border-radius: 6px; padding: 1.5rem 1.8rem; position: relative; overflow: hidden; margin-bottom: 2rem; }
+    .tip-box::before { content: '✓'; font-family: 'Playfair Display', serif; font-size: 8rem; position: absolute; top: -1rem; right: 1.5rem; color: rgba(255,255,255,0.05); line-height: 1; }
+    .tip-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .tip-text { font-size: 0.9rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+    footer { text-align: center; padding: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Gap year employment</p>
+      <h1>Finding <em>Work</em></h1>
+      <p class="subtitle">Where to apply, how to approach it, and how to make a good impression — especially when walking in off the street.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <p class="section-label">Bookshops — the dream option</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">📚</span>
+        <div>
+          <span class="badge badge-recommended">First Port of Call</span>
+          <span class="badge badge-walkin">Walk In</span>
+          <div class="card-title">Books on the Hill</div>
+          <div class="card-address">1 Holywell Hill, St Albans AL1 1ER</div>
+          <p class="card-desc">An independent gem with a café and reading rooms upstairs. Staff are genuine book lovers. Don't apply online — go in, have a conversation, buy something. Closed Monday and Tuesday. This is the one.</p>
+          <a class="card-link" href="http://books-on-the-hill.co.uk" target="_blank">books-on-the-hill.co.uk →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📖</span>
+        <div>
+          <span class="badge badge-walkin">Walk In</span>
+          <span class="badge badge-direct">Apply Direct</span>
+          <div class="card-title">Waterstones St Albans</div>
+          <div class="card-address">8 St Peter's Street, St Albans AL1 3LF</div>
+          <p class="card-desc">The high street option — larger, with a café upstairs. Still a book-focused environment. They hire people who genuinely love reading. Walk in and apply online.</p>
+          <a class="card-link" href="https://www.waterstones.com/jobs" target="_blank">waterstones.com/jobs →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">♻️</span>
+        <div>
+          <span class="badge badge-walkin">Walk In</span>
+          <div class="card-title">Oxfam Bookshop</div>
+          <div class="card-address">8-10 Catherine Street, St Albans AL3 5BX</div>
+          <p class="card-desc">Second-hand books at bargain prices. Worth considering for paid work and volunteering — Oxfam actively recruits volunteers, great for the CV and for meeting people.</p>
+          <a class="card-link" href="https://www.oxfam.org.uk/get-involved/volunteer-with-oxfam/" target="_blank">Volunteer with Oxfam →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">Supermarkets — reliable fallback</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">🛒</span>
+        <div>
+          <span class="badge badge-recommended">Best Bus Route</span>
+          <div class="card-title">Morrisons, Fleetville</div>
+          <div class="card-address">Reachable direct on the 653 from Batchwood</div>
+          <p class="card-desc">The most convenient option given the direct 653 bus. Big store, always needs staff. Apply online and walk in and ask for the duty manager.</p>
+          <a class="card-link" href="https://www.morrisons.jobs" target="_blank">morrisons.jobs →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🛒</span>
+        <div>
+          <div class="card-title">Sainsbury's, Everard Close</div>
+          <div class="card-address">Everard Close, St Albans AL1 2QU</div>
+          <p class="card-desc">Large superstore near the city centre, open seven days. Apply online or walk in and ask for the duty manager.</p>
+          <a class="card-link" href="https://www.sainsburys.jobs" target="_blank">sainsburys.jobs →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">Your CV — keep it simple</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">📝</span>
+        <div>
+          <div class="card-title">One Page, No Exceptions</div>
+          <p class="card-desc">At 18 with limited work history, one tight page is exactly right. Clean and readable beats a padded two-pager every time.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🧑</span>
+        <div>
+          <div class="card-title">Lead With a Personal Statement</div>
+          <p class="card-desc">Two or three sentences at the top about who you are. Tailor it to each employer — mention that you're a reader for the bookshops, or that you're reliable and local for supermarkets.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📋</span>
+        <div>
+          <div class="card-title">Everything Counts as Experience</div>
+          <p class="card-desc">School responsibilities, any volunteering, helping out informally — all of it goes on. At entry level, employers want to see reliability and attitude, not a long work history.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">Walking in — how to do it right</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">🕐</span>
+        <div>
+          <div class="card-title">Timing Matters</div>
+          <p class="card-desc">Mid-week, mid-morning is ideal — roughly 10am–12pm, Tuesday to Thursday. Avoid Monday mornings, weekend lunchtimes, and late afternoons. You want someone with headspace to talk to you.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🤝</span>
+        <div>
+          <div class="card-title">Ask for the Manager</div>
+          <p class="card-desc">Don't just hand your CV to whoever's at the till. Ask to speak to the duty manager. It shows initiative and means your CV lands in the right hands rather than a drawer under the counter.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">💬</span>
+        <div>
+          <div class="card-title">Have a Genuine Reason</div>
+          <p class="card-desc">For Books on the Hill: you're a reader, you love the shop. For Morrisons: you're local, you use the store. A real reason lands far better than "I'm looking for any job."</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🔄</span>
+        <div>
+          <div class="card-title">Follow Up After a Week</div>
+          <p class="card-desc">Pop back in after about a week if you haven't heard anything. A quick, friendly check-in shows initiative without being pushy. Most people don't bother — it sets you apart.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-label">The order of attack</p>
+      <p class="tip-text">Books on the Hill first — walk in, be yourself, buy a book. Waterstones second. Oxfam for volunteering regardless. Morrisons and Sainsbury's online applications running in parallel. Don't wait for one to say no before trying the next.</p>
+    </div>
+
+  </main>
+  <footer>Part of a personal resource guide for St Albans, 2026</footer>
+</body>
+</html>

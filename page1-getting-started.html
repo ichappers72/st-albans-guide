@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1a2e;
+      --cream: #f5f0e8;
+      --red: #c0392b;
+      --gold: #b8942e;
+      --muted: #6b6b7b;
+      --card-bg: #ffffff;
+      --green: #2e7d32;
+    }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    header { background: var(--ink); padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; border: 40px solid rgba(192,57,43,0.15); }
+    header::after { content: ''; position: absolute; bottom: -40px; left: 20%; width: 160px; height: 160px; border-radius: 50%; border: 25px solid rgba(184,148,46,0.12); }
+    .header-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards; }
+    .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 900; color: #ffffff; line-height: 1.1; margin-bottom: 1rem; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .subtitle { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; }
+
+    main { max-width: 700px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.1); }
+
+    .cards { display: flex; flex-direction: column; gap: 1px; background: rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden; margin-bottom: 2.5rem; }
+    .card { background: var(--card-bg); padding: 1.6rem 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.18s; }
+    .card:nth-child(3) { animation-delay: 0.26s; }
+    .card:nth-child(4) { animation-delay: 0.34s; }
+    .card:nth-child(5) { animation-delay: 0.42s; }
+    .card:nth-child(6) { animation-delay: 0.5s; }
+    .card:nth-child(7) { animation-delay: 0.58s; }
+
+    .card-icon { font-size: 1.5rem; min-width: 2.2rem; text-align: center; padding-top: 2px; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; }
+    .card-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .card-link { font-size: 0.73rem; font-weight: 500; color: var(--red); text-decoration: none; letter-spacing: 0.03em; }
+    .card-link:hover { text-decoration: underline; }
+
+    .priority { display: inline-block; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; margin-bottom: 0.4rem; }
+    .priority-high { background: #ffebee; color: #c62828; }
+    .priority-med { background: #fff8e1; color: #f57f17; }
+    .priority-low { background: #e8f5e9; color: var(--green); }
+
+    .tip-box { background: var(--ink); color: white; border-radius: 6px; padding: 1.5rem 1.8rem; position: relative; overflow: hidden; }
+    .tip-box::before { content: '!'; font-family: 'Playfair Display', serif; font-size: 8rem; position: absolute; top: -1.5rem; right: 1.5rem; color: rgba(255,255,255,0.05); line-height: 1; }
+    .tip-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .tip-text { font-size: 0.9rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+    footer { text-align: center; padding: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">First things first</p>
+      <h1>Getting <em>Started</em></h1>
+      <p class="subtitle">The admin that actually matters. Get these done in the right order and everything else falls into place.</p>
+    </div>
+  </header>
+
+  <main>
+    <p class="section-label">Do these first — roughly in this order</p>
+
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <div>
+          <span class="priority priority-high">Day One</span>
+          <div class="card-title">Get a UK SIM Card</div>
+          <p class="card-desc">Grab one at the airport or any high street phone shop. Start with pay-as-you-go — Giffgaff, SMARTY, or iD Mobile are all decent and cheap. You can always upgrade to a monthly plan once you're settled.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🏥</span>
+        <div>
+          <span class="priority priority-high">First Week</span>
+          <div class="card-title">Register with a GP</div>
+          <p class="card-desc">Find your nearest NHS GP surgery and register online or in person using your grandparents' address. Free and straightforward. Sort this before you need it, not when you're ill. Once registered, download the NHS app for appointments and prescriptions.</p>
+          <a class="card-link" href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/" target="_blank">nhs.uk — How to register with a GP →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📋</span>
+        <div>
+          <span class="priority priority-high">First Week</span>
+          <div class="card-title">Register on the Electoral Roll</div>
+          <p class="card-desc">Takes five minutes on gov.uk. Use your grandparents' address. Good habit to get into and helps build a paper trail at your address, which you'll need for other admin.</p>
+          <a class="card-link" href="https://www.gov.uk/register-to-vote" target="_blank">gov.uk/register-to-vote →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <div>
+          <span class="priority priority-med">First Month</span>
+          <div class="card-title">Set Up the NHS App</div>
+          <p class="card-desc">Once you're registered with a GP, download the NHS app. Book appointments, order repeat prescriptions, and access your health records — all from your phone.</p>
+          <a class="card-link" href="https://www.nhs.uk/nhs-app/" target="_blank">nhs.uk/nhs-app →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📮</span>
+        <div>
+          <span class="priority priority-med">First Month</span>
+          <div class="card-title">Build Up Proof of Address</div>
+          <p class="card-desc">Many things — opening bank accounts, getting a phone contract, applying for jobs — require two or more letters at your address. Get a letter from your GP, a bank statement, anything official. Start building this paper trail early.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🚗</span>
+        <div>
+          <span class="priority priority-med">When Ready</span>
+          <div class="card-title">Apply for a Provisional Driving Licence</div>
+          <p class="card-desc">This is your starting point before you can take lessons or a theory test. Apply online via gov.uk — you'll need your passport (or birth certificate and National Insurance number if no passport), and a recent passport-style photo. The fee is £34, paid by card online. Your licence arrives by post within about a week.</p>
+          <a class="card-link" href="https://www.gov.uk/apply-first-provisional-driving-licence" target="_blank">gov.uk — Apply for a provisional licence →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📖</span>
+        <div>
+          <span class="priority priority-med">After Provisional Arrives</span>
+          <div class="card-title">Theory Test — Book and Pass This First</div>
+          <p class="card-desc">You must pass your theory test before you can book a practical driving test. It has two parts: a multiple choice section (50 questions, pass mark 43) and a hazard perception video test. Book via gov.uk — costs £23. The DVSA app has official revision materials. Most people pass with 4–6 weeks of regular practice.</p>
+          <a class="card-link" href="https://www.gov.uk/book-theory-test" target="_blank">gov.uk — Book your theory test →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🚙</span>
+        <div>
+          <span class="priority priority-low">After Theory Test</span>
+          <div class="card-title">Driving Lessons &amp; Practical Test</div>
+          <p class="card-desc">Once you have a provisional licence you can start lessons. Look for a DVSA-approved instructor — check the official register on gov.uk. The practical test costs £62 (weekdays) or £75 (evenings and weekends). You can book it before you feel fully ready, but most instructors will advise you on timing. Average learner takes 45–47 hours of lessons.</p>
+          <a class="card-link" href="https://www.gov.uk/find-driving-instructor" target="_blank">gov.uk — Find an approved instructor →</a>
+          <a class="card-link" href="https://www.gov.uk/book-driving-test" target="_blank">gov.uk — Book your practical test →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">💻</span>
+        <div>
+          <span class="priority priority-low">When Working</span>
+          <div class="card-title">HMRC Personal Tax Account</div>
+          <p class="card-desc">Once you start work, set up your HMRC online account. You can check your tax code, make sure you're not being overtaxed (common for young first-time workers), and manage your National Insurance record.</p>
+          <a class="card-link" href="https://www.gov.uk/personal-tax-account" target="_blank">gov.uk/personal-tax-account →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-label">Good to know</p>
+      <p class="tip-text">Unlike many countries, the UK has no system for registering your address with local authorities. No need to report to a council or police station — the GP, electoral roll, and bank account are all you need to establish yourself.</p>
+    </div>
+  </main>
+
+  <footer>Part of a personal resource guide for St Albans, 2026</footer>
+</body>
+</html>

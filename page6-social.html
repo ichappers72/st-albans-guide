@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Social</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1a2e; --cream: #f5f0e8; --red: #c0392b; --gold: #b8942e; --muted: #6b6b7b; --card-bg: #ffffff; }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    header { background: var(--ink); padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; border: 40px solid rgba(192,57,43,0.15); }
+    header::after { content: ''; position: absolute; bottom: -40px; left: 20%; width: 160px; height: 160px; border-radius: 50%; border: 25px solid rgba(184,148,46,0.12); }
+    .header-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards; }
+    .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 900; color: #ffffff; line-height: 1.1; margin-bottom: 1rem; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .subtitle { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; }
+
+    main { max-width: 700px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.1); margin-top: 2rem; }
+    .section-label:first-child { margin-top: 0; }
+
+    .cards { display: flex; flex-direction: column; gap: 1px; background: rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); padding: 1.6rem 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+    .card:nth-child(1) { animation-delay: 0.1s; } .card:nth-child(2) { animation-delay: 0.18s; } .card:nth-child(3) { animation-delay: 0.26s; } .card:nth-child(4) { animation-delay: 0.34s; } .card:nth-child(5) { animation-delay: 0.42s; }
+
+    .card-icon { font-size: 1.5rem; min-width: 2.2rem; text-align: center; padding-top: 2px; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; }
+    .card-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .card-link { font-size: 0.73rem; font-weight: 500; color: var(--red); text-decoration: none; }
+    .card-link:hover { text-decoration: underline; }
+
+    .tip-box { background: var(--ink); color: white; border-radius: 6px; padding: 1.5rem 1.8rem; position: relative; overflow: hidden; }
+    .tip-box::before { content: '😄'; font-size: 6rem; position: absolute; top: 0rem; right: 1.5rem; opacity: 0.1; }
+    .tip-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .tip-text { font-size: 0.9rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+    footer { text-align: center; padding: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Starting from scratch</p>
+      <h1><em>The Social</em></h1>
+      <p class="subtitle">You know nobody yet. Here's how to fix that — without it feeling awkward or forced.</p>
+    </div>
+  </header>
+
+  <main>
+    <p class="section-label">Structured social — the easiest way in</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">🎲</span>
+        <div>
+          <div class="card-title">St Albans Thursday Night Boardgaming</div>
+          <p class="card-desc">An active Meetup group that meets weekly for board games. You already enjoy this — it's a perfect fit. People are there to play and chat, not stand around awkwardly with a drink. Just show up.</p>
+          <a class="card-link" href="https://www.meetup.com" target="_blank">Find it on meetup.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🍺</span>
+        <div>
+          <div class="card-title">St Albans Round Table</div>
+          <p class="card-desc">A social club specifically for 18–45 year olds. They do go-karting, brewery tours, weekends away, meals out and more — and they're a registered charity so it's not all just fun, there's some community work too. Designed for people new to an area.</p>
+          <a class="card-link" href="https://www.stalbansroundtable.org.uk" target="_blank">stalbansroundtable.org.uk →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <div>
+          <div class="card-title">Meetup.com — Your Social Toolkit</div>
+          <p class="card-desc">Download the app and filter by St Albans. There are active groups covering pub quizzes, walking, live music, board games, and more. Low commitment — you can try something once, see how it feels, and go back if you liked it.</p>
+          <a class="card-link" href="https://www.meetup.com" target="_blank">meetup.com →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">Sports & fitness</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">💪</span>
+        <div>
+          <div class="card-title">PureGym St Albans</div>
+          <p class="card-desc">Affordable no-contract gym right in the city centre — a solid option if you want a straightforward weights and cardio setup without the overhead of a full leisure centre. Open early to late, pay monthly with no tie-in. Good for getting into a routine quickly when you first arrive.</p>
+          <a class="card-link" href="https://www.puregym.com/gyms/st-albans/" target="_blank">puregym.com/gyms/st-albans →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🏸</span>
+        <div>
+          <div class="card-title">Batchwood Sports Centre</div>
+          <p class="card-desc">Right on your doorstep. Gym, tennis, badminton, squash, sports hall. A great place to try something new as well as stay fit. Badminton and squash are especially social — easy to find a game with someone new.</p>
+          <a class="card-link" href="https://www.everyoneactive.com/centre/batchwood-sports-centre/" target="_blank">everyoneactive.com — Batchwood →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">⚽</span>
+        <div>
+          <div class="card-title">5-a-side Football</div>
+          <p class="card-desc">One of the fastest ways to make friends at any age. There are organised leagues and pickup games all over St Albans. Check local Facebook groups or Footy Addicts for games you can join without needing a full team.</p>
+          <a class="card-link" href="https://www.footyaddicts.com" target="_blank">footyaddicts.com →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">The general social scene</p>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">🍻</span>
+        <div>
+          <div class="card-title">St Albans Has a Great Pub Scene</div>
+          <p class="card-desc">The city centre — particularly around Christopher Place and the Maltings — has a good mix of pubs, bars, and restaurants. Naturally social, and an easy default for after-work drinks once you've made some work friends.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-label">The only rule</p>
+      <p class="tip-text">Say yes to things. Even if it sounds a bit naff. Even if you're not sure. The friends you make in the first gap year are often the ones who stick. You don't find your people by staying in.</p>
+    </div>
+
+  </main>
+  <footer>Part of a personal resource guide for St Albans, 2026</footer>
+</body>
+</html>
