@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Outside</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1a2e; --cream: #f5f0e8; --red: #c0392b; --gold: #b8942e; --muted: #6b6b7b; --card-bg: #ffffff; }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    header { background: var(--ink); padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; background-image: url('outdoors.jpg'); background-size: cover; background-position: center 60%; }
+    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; border: 40px solid rgba(192,57,43,0.12); z-index: 1; }
+    header::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,25,15,0.72); z-index: 0; }
+    .header-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards; }
+    .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 900; color: #ffffff; line-height: 1.1; margin-bottom: 1rem; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .subtitle { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; }
+
+    nav { background: #1a1a2e; padding: 0.8rem 2rem; }
+    nav div { max-width: 700px; margin: 0 auto; }
+    nav a { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 600; color: #ffffff; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; background: #c0392b; padding: 0.45rem 1.1rem; border-radius: 3px; display: inline-block; }
+
+    main { max-width: 700px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.1); margin-top: 2rem; }
+    .section-label:first-child { margin-top: 0; }
+
+    .cards { display: flex; flex-direction: column; gap: 1px; background: rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); padding: 1.6rem 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+    .card:nth-child(1){animation-delay:0.1s}.card:nth-child(2){animation-delay:0.18s}.card:nth-child(3){animation-delay:0.26s}.card:nth-child(4){animation-delay:0.34s}.card:nth-child(5){animation-delay:0.42s}.card:nth-child(6){animation-delay:0.5s}
+    .card-icon { font-size: 1.5rem; min-width: 2.2rem; text-align: center; padding-top: 2px; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; }
+    .card-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .card-link { font-size: 0.73rem; font-weight: 500; color: var(--red); text-decoration: none; margin-right: 0.8rem; }
+    .card-link:hover { text-decoration: underline; }
+
+    .badge { display: inline-block; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; margin-bottom: 0.4rem; margin-right: 0.3rem; }
+    .badge-local { background: #e8f5e9; color: #2e7d32; }
+    .badge-nearby { background: #fff3e0; color: #e65100; }
+    .badge-london { background: #e3f2fd; color: #1565c0; }
+    .badge-free { background: #f3e5f5; color: #6a1b9a; }
+
+    .tip-box { background: var(--ink); color: white; border-radius: 6px; padding: 1.5rem 1.8rem; position: relative; overflow: hidden; }
+    .tip-box::before { content: '🌿'; font-size: 7rem; position: absolute; top: 0; right: 1rem; opacity: 0.1; }
+    .tip-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .tip-text { font-size: 0.9rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+    footer { text-align: center; padding: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Walking, thinking, exploring</p>
+      <h1>Get <em>Outside</em></h1>
+      <p class="subtitle">Hertfordshire is better walking country than people expect. Ancient woodland, Roman riverbanks, and chalk downland — most of it free and on your doorstep.</p>
+    </div>
+  </header>
+  <nav><div><a href="home.html">Home</a></div></nav>
+
+  <main>
+    <p class="section-label">On your doorstep — St Albans & local</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">🌳</span>
+        <div>
+          <span class="badge badge-local">St Albans area</span>
+          <span class="badge badge-free">Free</span>
+          <div class="card-title">Heartwood Forest</div>
+          <p class="card-desc">England's largest new continuous native forest, just north of St Albans near Sandridge. Over 600,000 trees, ancient woodland pockets, wildflower meadows, bluebells in spring, and 20km of paths and bridleways. A 5-mile loop takes about 2 hours. Free parking, free entry. The 305 and 357 buses pass through Sandridge — a short walk from the forest entrance.</p>
+          <a class="card-link" href="https://www.woodlandtrust.org.uk/visiting-woods/woods/heartwood-forest/" target="_blank">woodlandtrust.org.uk — Heartwood Forest →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🏛️</span>
+        <div>
+          <span class="badge badge-local">St Albans</span>
+          <span class="badge badge-free">Free</span>
+          <div class="card-title">Verulamium Park & River Ver</div>
+          <p class="card-desc">100 acres of parkland right in the city, built on the Roman town of Verulamium. Walk along the River Ver — one of England's rarest chalk streams — past Roman walls, the ornamental lake, and wildlife. You can spot kingfishers and muntjac deer. A perfect thinking walk that starts five minutes from the city centre. Finish at Ye Olde Fighting Cocks, reputedly one of England's oldest pubs.</p>
+          <a class="card-link" href="https://www.stalbansmuseums.org.uk/visit/verulamium-museum" target="_blank">Verulamium Museum →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🚂</span>
+        <div>
+          <span class="badge badge-local">St Albans to Hatfield</span>
+          <span class="badge badge-free">Free</span>
+          <div class="card-title">The Alban Way</div>
+          <p class="card-desc">6.5 miles along a disused railway line from St Albans to Hatfield — flat, traffic-free, and full of hidden history. Old station platforms are visible in the undergrowth, and it passes through green corridors of wildlife. Good for walking or cycling. You can join it at Fleetville or from central St Albans.</p>
+          <a class="card-link" href="https://www.stalbans.gov.uk/alban-way" target="_blank">stalbans.gov.uk — The Alban Way →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🌊</span>
+        <div>
+          <span class="badge badge-local">St Albans circular</span>
+          <span class="badge badge-free">Free</span>
+          <div class="card-title">Three Burys Walk — Ver Valley</div>
+          <p class="card-desc">A 7.5-mile circular walk starting from the Verulamium Museum, heading north past Childwickbury and Redbournbury Mill on the River Ver. One of the best local routes — varied landscape, quiet countryside, and genuine sense of getting away from the city without going far.</p>
+          <a class="card-link" href="https://www.alltrails.com/england/hertfordshire/st-albans" target="_blank">alltrails.com — St Albans walks →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">A bit further — bus or train</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">✍️</span>
+        <div>
+          <span class="badge badge-nearby">Wheathampstead — 321 bus</span>
+          <div class="card-title">Shaw's Corner Walk</div>
+          <p class="card-desc">A circular walk from Wheathampstead through Hertfordshire countryside to Shaw's Corner — the home of playwright George Bernard Shaw, now a National Trust property with a beautiful three-acre garden. About 5 miles, lovely rural paths. The house itself is fascinating for anyone interested in literature or history. Wheathampstead is on the 321 bus from The Ancient Briton.</p>
+          <a class="card-link" href="https://www.nationaltrust.org.uk/visit/hertfordshire/shaws-corner" target="_blank">nationaltrust.org.uk — Shaw's Corner →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🪁</span>
+        <div>
+          <span class="badge badge-nearby">Dunstable — 321 to Luton, then bus</span>
+          <div class="card-title">Dunstable Downs & Whipsnade Tree Cathedral</div>
+          <p class="card-desc">Sweeping views across the Vale of Aylesbury from the highest point in Bedfordshire, with wildflowers in spring and summer. Nearby is the Whipsnade Tree Cathedral — an extraordinary outdoor space where trees have been planted in the shape of a cathedral, created as a memorial after the First World War. Quiet, unusual, and genuinely moving.</p>
+          <a class="card-link" href="https://www.nationaltrust.org.uk/visit/beds-herts/dunstable-downs-and-the-whipsnade-estate" target="_blank">nationaltrust.org.uk — Dunstable Downs →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🏔️</span>
+        <div>
+          <span class="badge badge-nearby">Tring — train or 321 to Luton area</span>
+          <div class="card-title">Tring Park & The Ridgeway</div>
+          <p class="card-desc">One of the largest woodland and parkland areas in Hertfordshire, set on the edge of the Chilterns. Wide open meadows, ancient beech woodland, and the Ridgeway — one of Britain's oldest roads, used for 5,000 years. The village of Aldbury nearby has a historic stocks and whipping post on the green. Well worth a half-day.</p>
+          <a class="card-link" href="https://www.hertfordshire.gov.uk/tring-park" target="_blank">hertfordshire.gov.uk — Tring Park →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">London outdoors — 35 minutes away</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">🏊</span>
+        <div>
+          <span class="badge badge-london">London</span>
+          <span class="badge badge-free">Free</span>
+          <div class="card-title">Hampstead Heath</div>
+          <p class="card-desc">320 acres of wild, hilly parkland in North London — genuinely feels nothing like the city. Free open-air swimming ponds (separate men's and mixed ponds), great views over London from Parliament Hill, and proper countryside walking. One of London's greatest secrets. Tube to Hampstead or Gospel Oak.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🦌</span>
+        <div>
+          <span class="badge badge-london">London</span>
+          <span class="badge badge-free">Free</span>
+          <div class="card-title">Richmond Park</div>
+          <p class="card-desc">2,500 acres of ancient parkland in Southwest London with hundreds of wild deer roaming freely. On a clear day the views across to St Paul's are extraordinary. Bring a book, find a spot, and forget you're in one of the world's busiest cities. Train from St Pancras to Waterloo, then train to Richmond.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🌲</span>
+        <div>
+          <span class="badge badge-london">London / Essex border</span>
+          <span class="badge badge-free">Free</span>
+          <div class="card-title">Epping Forest</div>
+          <p class="card-desc">Ancient forest on the edge of London with oak trees up to 800 years old. Take the Central line to the end and you're in genuine ancient woodland. The Oak Trail is a 6.6-mile circular route through some of the oldest trees — walking under those canopies is a rare, humbling experience.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">Useful apps</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <div>
+          <div class="card-title">AllTrails & Komoot</div>
+          <p class="card-desc">Both are free GPS walking apps with thousands of rated, mapped local routes. AllTrails is more user-friendly for beginners; Komoot is slightly more serious and better for longer routes. Download both — between them they cover every walk mentioned on this page and thousands more. No need to plan in advance; just open the app and find something nearby.</p>
+          <a class="card-link" href="https://www.alltrails.com" target="_blank">alltrails.com →</a>
+          <a class="card-link" href="https://www.komoot.com" target="_blank">komoot.com →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-label">Worth knowing</p>
+      <p class="tip-text">The Hertfordshire Way is a 170-mile circular long-distance path that passes right through St Albans. You can walk it in sections as day routes — each one takes you through a different slice of the county. A good long-term project for someone who likes having something to work towards.</p>
+    </div>
+  </main>
+  <footer>Part of a personal resource guide for St Albans, 2026</footer>
+</body>
+</html>

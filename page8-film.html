@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1a2e; --cream: #f5f0e8; --red: #c0392b; --gold: #b8942e; --muted: #6b6b7b; --card-bg: #ffffff; }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    header { background: var(--ink); padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; background-image: url('film.jpg'); background-size: cover; background-position: center 50%; }
+    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; border: 40px solid rgba(192,57,43,0.12); z-index: 1; }
+    header::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,12,30,0.75); z-index: 0; }
+    .header-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards; }
+    .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 900; color: #ffffff; line-height: 1.1; margin-bottom: 1rem; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .subtitle { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; }
+
+    nav { background: #1a1a2e; padding: 0.8rem 2rem; }
+    nav div { max-width: 700px; margin: 0 auto; }
+    nav a { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 600; color: #ffffff; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; background: #c0392b; padding: 0.45rem 1.1rem; border-radius: 3px; display: inline-block; }
+
+    main { max-width: 700px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.1); margin-top: 2rem; }
+    .section-label:first-child { margin-top: 0; }
+
+    .cards { display: flex; flex-direction: column; gap: 1px; background: rgba(0,0,0,0.08); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+    .card { background: var(--card-bg); padding: 1.6rem 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+    .card:nth-child(1){animation-delay:0.1s}.card:nth-child(2){animation-delay:0.18s}.card:nth-child(3){animation-delay:0.26s}.card:nth-child(4){animation-delay:0.34s}.card:nth-child(5){animation-delay:0.42s}.card:nth-child(6){animation-delay:0.5s}
+    .card-icon { font-size: 1.5rem; min-width: 2.2rem; text-align: center; padding-top: 2px; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; }
+    .card-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .card-link { font-size: 0.73rem; font-weight: 500; color: var(--red); text-decoration: none; margin-right: 0.8rem; }
+    .card-link:hover { text-decoration: underline; }
+
+    .badge { display: inline-block; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; margin-bottom: 0.4rem; margin-right: 0.3rem; }
+    .badge-london { background: #e3f2fd; color: #1565c0; }
+    .badge-free { background: #e8f5e9; color: #2e7d32; }
+    .badge-local { background: #fff3e0; color: #e65100; }
+
+    .tip-box { background: var(--ink); color: white; border-radius: 6px; padding: 1.5rem 1.8rem; position: relative; overflow: hidden; }
+    .tip-box::before { content: '🎬'; font-size: 7rem; position: absolute; top: 0; right: 1rem; opacity: 0.08; }
+    .tip-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .tip-text { font-size: 0.9rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+    footer { text-align: center; padding: 1.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">For the film lover</p>
+      <h1>Film</h1>
+      <p class="subtitle">From £4 screenings at one of the world's great cinemas to cult classics and immersive experiences — all within reach.</p>
+    </div>
+  </header>
+  <nav><div><a href="home.html">Home</a></div></nav>
+
+  <main>
+    <p class="section-label">London — the essential stops</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">🎞️</span>
+        <div>
+          <span class="badge badge-london">London</span>
+          <span class="badge badge-free">£4 tickets</span>
+          <div class="card-title">BFI Southbank — 25 & Under Scheme</div>
+          <p class="card-desc">One of the world's great cinemas, right on the South Bank. If you're under 26, sign up for the 25 & Under scheme and pay just £4 a ticket for any regular screening — classic films, world cinema, retrospectives, director seasons. Festival tickets are £6. Sign up once online, verify your age, then book at any time. There is genuinely nothing else like this in the country for the price.</p>
+          <a class="card-link" href="https://www.bfi.org.uk/25-and-under" target="_blank">bfi.org.uk — 25 & Under scheme →</a>
+          <a class="card-link" href="https://whatson.bfi.org.uk" target="_blank">What's on →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">📺</span>
+        <div>
+          <span class="badge badge-london">London</span>
+          <span class="badge badge-free">Free</span>
+          <div class="card-title">BFI Mediatheque</div>
+          <p class="card-desc">Inside BFI Southbank — free access to thousands of hours of British film and television from the BFI National Archive. Turn up, sit down, and watch anything from 1890s silent films to 1970s BBC dramas. No booking required, entirely free. A serious rabbit hole for any film lover.</p>
+          <a class="card-link" href="https://www.bfi.org.uk/bfi-southbank/bfi-mediatheque" target="_blank">bfi.org.uk/mediatheque →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🍿</span>
+        <div>
+          <span class="badge badge-london">London</span>
+          <div class="card-title">Prince Charles Cinema, Leicester Square</div>
+          <p class="card-desc">A cult independent cinema in the heart of the West End — cheap tickets, double bills, singalong screenings, cult classics on the big screen. Much more characterful than any multiplex. The programming is inventive and the atmosphere brilliant. Check the website for what's on — something interesting is always showing.</p>
+          <a class="card-link" href="https://www.princecharlescinema.com" target="_blank">princecharlescinema.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">✨</span>
+        <div>
+          <span class="badge badge-london">London</span>
+          <div class="card-title">Secret Cinema</div>
+          <p class="card-desc">Immersive film events built around a classic movie — you dress up, explore themed sets, interact with actors, and then watch the film. More of a splurge than the others but genuinely unforgettable for the right film. Past events have covered everything from Moulin Rouge to Blade Runner. Keep an eye on the website for upcoming productions.</p>
+          <a class="card-link" href="https://www.secretcinema.org" target="_blank">secretcinema.org →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">Online — watch at home</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">💻</span>
+        <div>
+          <span class="badge badge-free">From £6.99/month</span>
+          <div class="card-title">BFI Player</div>
+          <p class="card-desc">The BFI's streaming service. A free tier gives access to a curated selection; the subscription unlocks thousands of films from the archive. Far more interesting than Netflix for someone who actually loves cinema — world cinema, British classics, documentaries, silent films.</p>
+          <a class="card-link" href="https://player.bfi.org.uk" target="_blank">player.bfi.org.uk →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🎭</span>
+        <div>
+          <div class="card-title">Letterboxd</div>
+          <p class="card-desc">Not a streaming service — a social network for film lovers. Log what you've watched, write reviews, follow other people's lists, discover films you'd never find otherwise. Completely free and genuinely one of the best communities on the internet for anyone serious about film.</p>
+          <a class="card-link" href="https://letterboxd.com" target="_blank">letterboxd.com →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-label">Local — St Albans & nearby</p>
+    <div class="cards">
+
+      <div class="card">
+        <span class="card-icon">🎬</span>
+        <div>
+          <span class="badge badge-local">St Albans</span>
+          <div class="card-title">Alban Arena & Local Screenings</div>
+          <p class="card-desc">St Albans isn't blessed with an independent cinema, but the Alban Arena occasionally hosts special film events and screenings. Worth checking their programme. For standard releases, Watford (Odeon and Vue) is easily reachable on the 321 bus.</p>
+          <a class="card-link" href="https://www.alban-arena.co.uk" target="_blank">alban-arena.co.uk →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-label">The move</p>
+      <p class="tip-text">Sign up for the BFI 25 & Under scheme the moment you arrive. Then sign up to the BFI mailing list — they announce seasons, special events and Q&As with directors by email. The South Bank is 35 minutes door to door and one of the best evenings you can have in London for under a tenner.</p>
+    </div>
+  </main>
+  <footer>Part of a personal resource guide for St Albans, 2026</footer>
+</body>
+</html>
