@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>London — Ideas Worth Travelling For</title>
+  <title>London</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,6 +32,9 @@
       padding: 3rem 2rem 2.5rem;
       position: relative;
       overflow: hidden;
+      background-image: url('london.jpg');
+      background-size: cover;
+      background-position: center 60%;
     }
 
     header::before {
@@ -40,23 +43,23 @@
       top: -60px; right: -60px;
       width: 280px; height: 280px;
       border-radius: 50%;
-      border: 40px solid rgba(192,57,43,0.15);
+      border: 40px solid rgba(192,57,43,0.1);
+      z-index: 1;
     }
 
     header::after {
       content: '';
       position: absolute;
-      bottom: -40px; left: 20%;
-      width: 160px; height: 160px;
-      border-radius: 50%;
-      border: 25px solid rgba(184,148,46,0.12);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 12, 30, 0.78);
+      z-index: 0;
     }
 
     .header-inner {
       max-width: 700px;
       margin: 0 auto;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .eyebrow {
@@ -293,8 +296,8 @@
   <header>
     <div class="header-inner">
       <p class="eyebrow">20 minutes on the train</p>
-      <h1>London —<br><em>Ideas Worth</em><br>Travelling For</h1>
-      <p class="subtitle">Six institutions for curious minds. Free talks, world-class debates, and lectures on history, geopolitics, philosophy, and everything in between.</p>
+      <h1>London —<br><em>Ideas, Culture</em><br>&amp; Days Out</h1>
+      <p class="subtitle">Six institutions for curious minds, plus some of the best cultural experiences the city has to offer — most of them free or very cheap.</p>
       <span class="distance-badge">St Albans → London · Thameslink · ~20 min</span>
     </div>
   </header>
@@ -396,6 +399,70 @@
     <div class="tip-box">
       <p class="tip-label">The move</p>
       <p class="tip-text">Sign up to the mailing list for each institution you like. Most send a weekly or monthly programme so you can pick and choose what catches your eye — no commitment, no cost, just show up when something looks good.</p>
+    </div>
+
+    <p class="section-label" style="margin-top:2.5rem;">Culture &amp; days out</p>
+
+    <div class="cards">
+
+      <a class="card" href="https://www.tate.org.uk/visit/tate-modern" target="_blank">
+        <span class="card-number">01</span>
+        <div class="card-body">
+          <div class="card-title">Tate Modern <span class="arrow">→</span></div>
+          <p class="card-desc">World-class modern and contemporary art in a converted power station on the South Bank. Free entry to the permanent collection, with ticketed exhibitions for major shows. The building itself is worth the trip — and Bankside is one of the best areas of London to wander.</p>
+          <div>
+            <span class="tag tag-free">Free Entry</span>
+          </div>
+          <br>
+          <span class="card-url">tate.org.uk/tate-modern</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.bl.uk" target="_blank">
+        <span class="card-number">02</span>
+        <div class="card-body">
+          <div class="card-title">The British Library <span class="arrow">→</span></div>
+          <p class="card-desc">One of the great buildings in London. Free entry to the permanent collection — which includes the Magna Carta, a Gutenberg Bible, handwritten Beatles lyrics, and Leonardo da Vinci's notebook. Free exhibitions run throughout the year. An essential stop for any book lover.</p>
+          <div>
+            <span class="tag tag-free">Free Entry</span>
+            <span class="tag tag-history">History</span>
+          </div>
+          <br>
+          <span class="card-url">bl.uk</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.shakespearesglobe.com" target="_blank">
+        <span class="card-number">03</span>
+        <div class="card-body">
+          <div class="card-title">Shakespeare's Globe <span class="arrow">→</span></div>
+          <p class="card-desc">Standing tickets in the Yard are just £5 — one of the best value cultural experiences in London. You watch the play as Elizabethan audiences did: on your feet, close to the stage, outdoors (weather permitting). Even if you've never been into Shakespeare, this is genuinely thrilling.</p>
+          <div>
+            <span class="tag tag-free">£5 standing</span>
+          </div>
+          <br>
+          <span class="card-url">shakespearesglobe.com</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://www.somersethouse.org.uk" target="_blank">
+        <span class="card-number">04</span>
+        <div class="card-body">
+          <div class="card-title">Somerset House <span class="arrow">→</span></div>
+          <p class="card-desc">A spectacular 18th-century riverside building with a free courtyard, interesting art exhibitions, a programme of events year-round, and an ice rink in winter. Good café and bar. Right on the Strand between the West End and the South Bank — easy to combine with anything else nearby.</p>
+          <div>
+            <span class="tag tag-free">Free Courtyard</span>
+          </div>
+          <br>
+          <span class="card-url">somersethouse.org.uk</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="tip-box">
+      <p class="tip-label">Worth knowing</p>
+      <p class="tip-text">Almost all of London's major museums and galleries are free — the National Gallery, National Portrait Gallery, V&amp;A, Natural History Museum, Science Museum, and more. A day in London doesn't need to cost much beyond the train fare. Plan a route, pick two or three stops, and walk between them.</p>
     </div>
 
   </main>
